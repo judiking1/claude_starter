@@ -1,9 +1,8 @@
 ---
 name: team-lead
 description: 팀장 모드 — Agent 서브에이전트를 오케스트레이션하여 병렬로 기능 구현. 작업을 분해하고 각 에이전트에 역할을 배정
-argument-hint: [task-description]
+argument-hint: "task-description"
 user-invocable: true
-allowed-tools: Read, Write, Edit, Glob, Grep, Agent, Bash, TodoWrite, AskUserQuestion
 ---
 
 # Team Lead Skill — 팀장 모드

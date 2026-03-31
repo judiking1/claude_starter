@@ -1,9 +1,8 @@
 ---
 name: project-kickoff
 description: 새 프로젝트 시작 시 컨셉, 페르소나, 디자인 패턴, 기술 결정을 대화형으로 설정
-argument-hint: [project-name]
+argument-hint: "project-name"
 user-invocable: true
-allowed-tools: Read, Write, Edit, Glob, Grep, Agent, AskUserQuestion, TodoWrite
 ---
 
 # Project Kickoff Skill

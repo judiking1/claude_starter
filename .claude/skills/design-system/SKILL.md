@@ -1,9 +1,8 @@
 ---
 name: design-system
 description: 디자인 시스템 구축 — 타이포그래피, 색상 팔레트, 컴포넌트 라이브러리, 간격/레이아웃 시스템 설정
-argument-hint: [component-name or "init"]
+argument-hint: "component-name or init"
 user-invocable: true
-allowed-tools: Read, Write, Edit, Glob, Grep, Agent, AskUserQuestion, TodoWrite
 ---
 
 # Design System Skill

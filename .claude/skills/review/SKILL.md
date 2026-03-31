@@ -2,8 +2,6 @@
 name: review
 description: 코드 리뷰 — 현재 변경사항을 CLAUDE.md 규칙 기준으로 검사하고 개선점 제안
 user-invocable: true
-allowed-tools: Read, Glob, Grep, Bash, Agent
-context: fork
 ---
 
 # Code Review Skill

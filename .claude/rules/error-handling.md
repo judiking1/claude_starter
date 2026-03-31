@@ -1,5 +1,7 @@
 ---
-paths: "src/services/**,src/hooks/**"
+paths:
+  - "src/services/**"
+  - "src/hooks/**"
 ---
 
 # 에러 처리 패턴

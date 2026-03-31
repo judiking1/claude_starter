@@ -1,5 +1,7 @@
 ---
-paths: "src/components/**,src/styles/**"
+paths:
+  - "src/components/**"
+  - "src/styles/**"
 ---
 
 # 디자인 시스템 규칙

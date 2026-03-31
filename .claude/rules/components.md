@@ -1,5 +1,7 @@
 ---
-paths: "src/components/**,src/pages/**"
+paths:
+  - "src/components/**"
+  - "src/pages/**"
 ---
 
 # 컴포넌트 패턴 규칙

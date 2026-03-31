@@ -1,5 +1,7 @@
 ---
-paths: "**/*.ts,**/*.tsx"
+paths:
+  - "**/*.ts"
+  - "**/*.tsx"
 ---
 
 # TypeScript 상세 규칙
