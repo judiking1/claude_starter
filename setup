@@ -44,6 +44,7 @@ echo ""
 
 # 스킬 목록 출력
 echo "사용 가능한 스킬:"
+echo "  /init             — 프로젝트 템플릿 초기화 (CLAUDE.md, rules, docs)"
 echo "  /project-kickoff  — 새 프로젝트 시작 (컨셉, 디자인, 기술 결정)"
 echo "  /plan-review      — 코딩 전 아키텍처 리뷰"
 echo "  /team-lead        — 병렬 에이전트 오케스트레이션"
@@ -56,16 +57,13 @@ echo "  /careful          — 위험 명령 가드레일"
 echo "  /retro            — 주간 회고"
 echo ""
 
-# init 스크립트 실행 권한
-chmod +x "$INSTALL_DIR/init"
-
 echo "설치 완료!"
 echo ""
 echo "=== 다음 단계 ==="
 echo ""
 echo "새 프로젝트를 시작하려면:"
 echo "  cd ~/projects/my-project"
-echo "  ~/.claude/skills/claude_starter/init"
 echo "  claude"
-echo "  > /project-kickoff my-project"
+echo "  > /init my-project              ← 템플릿 초기화"
+echo "  > /project-kickoff my-project   ← 프로젝트 설정 시작"
 echo ""

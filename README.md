@@ -2,7 +2,7 @@
 
 Claude Code를 위한 스킬 팩 + 프로젝트 템플릿입니다.
 
-PC에 한 번 설치하면 어떤 프로젝트에서든 `/ship`, `/qa`, `/review` 등 10개의 커스텀 스킬을 바로 사용할 수 있습니다. 새 프로젝트 시작 시에는 `init` 스크립트로 규칙 파일만 복사하면 됩니다.
+PC에 한 번 설치하면 어떤 프로젝트에서든 `/ship`, `/qa`, `/review` 등 11개의 커스텀 스킬을 바로 사용할 수 있습니다. 새 프로젝트 시작 시에는 Claude Code에서 `/init my-project`만 입력하면 됩니다.
 
 > **Inspired by [gstack](https://github.com/garrytan/gstack)** — Builder principles, structured workflows, and safety guardrails adapted for React+Vite projects.
 
@@ -16,7 +16,7 @@ git clone --depth 1 https://github.com/judiking1/claude_starter.git ~/.claude/sk
 cd ~/.claude/skills/claude_starter && ./setup
 ```
 
-이것으로 끝입니다. 이제 어떤 프로젝트에서든 Claude Code를 열면 10개 스킬을 사용할 수 있습니다.
+이것으로 끝입니다. 이제 어떤 프로젝트에서든 Claude Code를 열면 11개 스킬을 사용할 수 있습니다.
 
 ---
 
@@ -25,31 +25,32 @@ cd ~/.claude/skills/claude_starter && ./setup
 ### 시나리오: "롤러코스터 타이쿤 웹 버전을 만들고 싶어"
 
 ```bash
-# 1. 프로젝트 폴더 생성 (또는 기존 repo 사용)
+# 1. 프로젝트 폴더 생성 (또는 기존 repo로 이동)
 mkdir roller-coaster-tycoon && cd roller-coaster-tycoon
 git init
 
-# 2. 프로젝트 템플릿 초기화 (규칙 파일 + 문서 복사)
-~/.claude/skills/claude_starter/init roller-coaster-tycoon
-
-# 3. Claude Code 실행
+# 2. Claude Code 실행
 claude
-
-# 4. 프로젝트 킥오프!
-> /project-kickoff roller-coaster-tycoon
 ```
 
-`init`이 하는 일:
-- `CLAUDE.md` 복사 (Claude에게 내 코딩 규칙을 알려주는 파일)
-- `.claude/rules/` 복사 (TypeScript, 성능, 에러 처리 등 상세 규칙)
-- `docs/` 복사 (가이드, ADR 템플릿)
+Claude Code 채팅창에서:
+```
+> /init roller-coaster-tycoon        ← 규칙 파일 + 문서 자동 복사
+> /project-kickoff roller-coaster-tycoon  ← 프로젝트 설정 시작
+```
+
+`/init`이 하는 일:
+- `CLAUDE.md` 생성 (Claude에게 내 코딩 규칙을 알려주는 파일)
+- `.claude/rules/` 생성 (TypeScript, 성능, 에러 처리 등 상세 규칙 7개)
+- `docs/` 생성 (사용 가이드, ADR 템플릿)
 - 프로젝트 이름을 `CLAUDE.md`에 자동 반영
 
 ### 이미 존재하는 프로젝트에 추가
 
 ```bash
 cd ~/projects/my-existing-project
-~/.claude/skills/claude_starter/init my-existing-project
+claude
+> /init my-existing-project
 ```
 
 기존 코드에 영향 없습니다. `CLAUDE.md`, `.claude/rules/`, `docs/`만 추가됩니다.
@@ -106,10 +107,11 @@ git branch -M main && git push -u origin main
 
 ---
 
-## 사용 가능한 스킬 (10개)
+## 사용 가능한 스킬 (11개)
 
 ### 프로젝트를 처음 시작할 때
 ```
+/init my-project           ← 프로젝트에 규칙 파일 + 문서 초기화
 /project-kickoff my-app    ← 프로젝트 설정 (컨셉, 디자인, 기술 결정)
 /design-system init        ← 디자인 시스템 자동 구축
 ```
@@ -189,8 +191,8 @@ git branch -M main && git push -u origin main
 ```
 claude_starter/
 ├── setup                      # 글로벌 설치 스크립트 (PC에 1번)
-├── init                       # 프로젝트 초기화 스크립트 (프로젝트마다)
 │
+├── init/SKILL.md              # /init — 프로젝트 템플릿 초기화
 ├── careful/SKILL.md           # /careful — 위험 명령 가드레일
 ├── design-system/SKILL.md     # /design-system — 디자인 시스템
 ├── investigate/SKILL.md       # /investigate — 체계적 디버깅

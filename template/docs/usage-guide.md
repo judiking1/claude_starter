@@ -66,8 +66,13 @@ cd ~/.claude/skills/claude_starter && ./setup
 mkdir roller-coaster-tycoon && cd roller-coaster-tycoon
 git init
 
-# 프로젝트 템플릿 초기화 (규칙 파일 + 문서 복사)
-~/.claude/skills/claude_starter/init roller-coaster-tycoon
+# Claude Code 실행
+claude
+```
+
+Claude Code 채팅창에서:
+```
+> /init roller-coaster-tycoon
 ```
 
 이것만 하면 프로젝트 폴더에 `CLAUDE.md`, `.claude/rules/`, `docs/`가 생성됩니다.
@@ -78,11 +83,15 @@ git init
 
 ```bash
 cd ~/projects/roller-coaster-tycoon
+claude
+```
 
-# 템플릿 초기화
-~/.claude/skills/claude_starter/init roller-coaster-tycoon
+```
+> /init roller-coaster-tycoon
+```
 
-# 커밋 & push
+초기화 후 터미널에서:
+```bash
 git add CLAUDE.md .claude docs
 git commit -m "feat: add Claude Code boilerplate"
 git push
