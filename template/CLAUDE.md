@@ -113,8 +113,9 @@ src/
 - **/investigate**: 체계적 디버깅 (Root Cause First + 3-Hypothesis Rule)
 - **/careful**: 위험 명령 가드레일 (rm -rf, DROP, force push 등 감지)
 
-### 분석
+### 분석 & 학습
 - **/retro**: 주간 회고 (Git 히스토리 기반 생산성 분석)
+- **/learn**: 세션 간 학습 관리 (패턴·실수·선호도 기록 → 다음 세션 자동 활용)
 - **Claude Preview**: UI 변경 시 시각적 확인
 
 ## 상세 규칙 참조

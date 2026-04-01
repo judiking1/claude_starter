@@ -52,7 +52,7 @@ npm install -g pnpm
 
 ### 2-1. 글로벌 설치 (PC에 한 번만)
 
-스킬(11개 커맨드)을 PC에 설치합니다. 이후 어떤 프로젝트에서든 사용 가능합니다.
+스킬(12개 커맨드)을 PC에 설치합니다. 이후 어떤 프로젝트에서든 사용 가능합니다.
 
 ```bash
 git clone --depth 1 https://github.com/judiking1/claude_starter.git ~/.claude/skills/claude_starter
@@ -379,6 +379,15 @@ Claude가 자동으로 처리합니다:
 - 핫스팟 파일 (가장 자주 바뀌는 파일 = 불안정한 코드)
 - 포커스 점수 (한 영역에 집중했는지 vs 산발적)
 - 연속 출근일 (streak)
+
+### `/learn` — 세션 간 학습 관리
+**언제 쓰나:** 세션에서 유용한 발견을 다음에도 기억하고 싶을 때
+**뭘 하나:**
+- `/learn`: 현재 세션에서 발견한 패턴·실수·선호도를 `.claude/learnings.md`에 기록
+- `/learn review`: 지금까지 축적된 학습 내용 확인
+- `/learn prune`: 오래되거나 불필요한 항목 정리
+- `/learn search 키워드`: 학습 내용에서 키워드 검색
+- 다음 세션에서 Claude가 자동으로 읽어 같은 실수를 반복하지 않음
 
 ---
 

@@ -55,6 +55,7 @@ echo "  /ship             — 자동 배포 파이프라인"
 echo "  /investigate      — 체계적 디버깅"
 echo "  /careful          — 위험 명령 가드레일"
 echo "  /retro            — 주간 회고"
+echo "  /learn            — 세션 간 학습 관리"
 echo ""
 
 echo "설치 완료!"

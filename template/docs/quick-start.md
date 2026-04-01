@@ -70,13 +70,14 @@ git add CLAUDE.md .claude docs && git commit -m "feat: add Claude Code boilerpla
 | `/investigate` | `/investigate` | Root Cause + 3-Hypothesis |
 | `/careful` | `/careful` | 위험 명령 가드레일 |
 | `/retro` | `/retro` 또는 `/retro 30d` | Git 기반 생산성 분석 |
+| `/learn` | `/learn` 또는 `/learn review` | 세션 간 학습 관리 |
 
 ---
 
 ## 추천 워크플로우
 
 ```
-/project-kickoff → /design-system init → /plan-review → 코딩 → /review → /qa → /ship → /retro
+/project-kickoff → /design-system init → /plan-review → 코딩 → /review → /qa → /ship → /retro → /learn
 ```
 
 ---
