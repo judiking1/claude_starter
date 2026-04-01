@@ -48,70 +48,49 @@ npm install -g pnpm
 
 ---
 
-## 2. 보일러플레이트 가져오기
+## 2. 보일러플레이트 설치 & 프로젝트 초기화
 
-### 시나리오 1: 아직 프로젝트 폴더가 없을 때 (가장 간단)
+### 2-1. 글로벌 설치 (PC에 한 번만)
+
+스킬(10개 커맨드)을 PC에 설치합니다. 이후 어떤 프로젝트에서든 사용 가능합니다.
 
 ```bash
-# 1. 원하는 폴더 위치로 이동
-cd ~/projects    # 또는 원하는 경로
+git clone --depth 1 https://github.com/judiking1/claude_starter.git ~/.claude/skills/claude_starter
+cd ~/.claude/skills/claude_starter && ./setup
+```
 
-# 2. 보일러플레이트를 프로젝트 이름으로 복제
-git clone https://github.com/judiking1/claude_starter.git roller-coaster-tycoon
+### 2-2. 새 프로젝트 시작
 
-# 3. 프로젝트 폴더로 이동
-cd roller-coaster-tycoon
-
-# 4. 보일러플레이트의 git 히스토리 제거 & 새로 시작
-rm -rf .git
+```bash
+# 프로젝트 폴더 생성 (또는 기존 폴더 사용)
+mkdir roller-coaster-tycoon && cd roller-coaster-tycoon
 git init
-git add .
-git commit -m "first commit"
+
+# 프로젝트 템플릿 초기화 (규칙 파일 + 문서 복사)
+~/.claude/skills/claude_starter/init roller-coaster-tycoon
 ```
 
-이제 GitHub에서 빈 repo를 만들고 연결합니다:
+이것만 하면 프로젝트 폴더에 `CLAUDE.md`, `.claude/rules/`, `docs/`가 생성됩니다.
+
+### 2-3. 이미 만들어둔 GitHub repo에 적용
+
+이미 `roller-coaster-tycoon` repo가 GitHub에 있고, 로컬에 clone해둔 상태:
 
 ```bash
-# 5. GitHub에서 "roller-coaster-tycoon" 이름으로 빈 repo 생성
-#    (README, .gitignore, license 모두 체크하지 않고 빈 상태로 생성)
-
-# 6. 원격 repo 연결
-git remote add origin https://github.com/내아이디/roller-coaster-tycoon.git
-git branch -M main
-git push -u origin main
-```
-
-### 시나리오 2: 이미 GitHub에 repo를 만들었을 때
-
-이미 `roller-coaster-tycoon` repo가 GitHub에 있고, 로컬에도 clone해둔 상태라면:
-
-```bash
-# 1. 보일러플레이트를 임시로 다운로드
-git clone https://github.com/judiking1/claude_starter.git /tmp/claude_starter
-
-# 2. 내 프로젝트 폴더로 이동
 cd ~/projects/roller-coaster-tycoon
 
-# 3. 보일러플레이트 파일들을 복사
-cp /tmp/claude_starter/CLAUDE.md .
-cp -r /tmp/claude_starter/.claude .
-cp -r /tmp/claude_starter/docs .
+# 템플릿 초기화
+~/.claude/skills/claude_starter/init roller-coaster-tycoon
 
-# 4. 임시 폴더 삭제
-rm -rf /tmp/claude_starter
-
-# 5. 커밋
+# 커밋 & push
 git add CLAUDE.md .claude docs
 git commit -m "feat: add Claude Code boilerplate"
 git push
 ```
 
-### 시나리오 3: 이미 코드가 있는 프로젝트에 추가
+기존 코드에 영향 없습니다 — `CLAUDE.md`, `.claude/`, `docs/`는 Claude Code가 읽는 문서일 뿐, 빌드나 실행과 무관합니다.
 
-진행 중인 프로젝트에 보일러플레이트를 추가할 때도 시나리오 2와 동일합니다.
-기존 코드에 영향을 주지 않습니다 — `CLAUDE.md`, `.claude/`, `docs/`는 Claude Code가 읽는 문서일 뿐, 빌드나 실행과 무관합니다.
-
-> 단, 기존에 `.claude/` 폴더나 `CLAUDE.md`가 있다면 덮어쓰게 되므로 백업하세요.
+> 기존에 `.claude/` 폴더나 `CLAUDE.md`가 있다면 덮어쓸지 물어봅니다.
 
 ---
 

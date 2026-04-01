@@ -4,36 +4,30 @@
 
 ---
 
-## 30초 시작
+## 글로벌 설치 (PC에 1번)
 
 ```bash
-# 1. 복제
-git clone https://github.com/judiking1/claude_starter.git my-project
-cd my-project
-rm -rf .git && git init
+git clone --depth 1 https://github.com/judiking1/claude_starter.git ~/.claude/skills/claude_starter
+cd ~/.claude/skills/claude_starter && ./setup
+```
 
-# 2. (선택) GitHub repo 연결
-git add . && git commit -m "first commit"
-git remote add origin https://github.com/내아이디/my-project.git
-git branch -M main && git push -u origin main
+## 새 프로젝트 시작
 
-# 3. CLAUDE.md 수정
-#    [PROJECT_NAME] → my-project
-#    [PROJECT_DESCRIPTION] → 프로젝트 설명
+```bash
+mkdir my-project && cd my-project && git init
+~/.claude/skills/claude_starter/init my-project
 
-# 4. Claude Code 실행
+# CLAUDE.md에서 [PROJECT_DESCRIPTION] 수정
+
 claude
 > /project-kickoff my-project
 ```
 
-## 기존 repo에 추가
+## 기존 프로젝트에 추가
 
 ```bash
-git clone https://github.com/judiking1/claude_starter.git /tmp/claude_starter
-cp /tmp/claude_starter/CLAUDE.md .
-cp -r /tmp/claude_starter/.claude .
-cp -r /tmp/claude_starter/docs .
-rm -rf /tmp/claude_starter
+cd ~/projects/existing-project
+~/.claude/skills/claude_starter/init my-project
 git add CLAUDE.md .claude docs && git commit -m "feat: add Claude Code boilerplate"
 ```
 
