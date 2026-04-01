@@ -1,146 +1,100 @@
 # Quick Start Guide
 
-> 이 보일러플레이트로 새 프로젝트를 시작하는 방법
+> 경험자를 위한 간결한 가이드. 상세 설명은 [usage-guide.md](usage-guide.md)를 참조하세요.
 
 ---
 
-## 1. 보일러플레이트 복제
+## 30초 시작
 
 ```bash
-# 이 레포를 복제
-git clone <this-repo-url> my-project
+# 1. 복제
+git clone https://github.com/judiking1/claude_starter.git my-project
 cd my-project
-
-# git 히스토리 초기화
 rm -rf .git && git init
-```
 
-## 2. CLAUDE.md 커스터마이징
+# 2. (선택) GitHub repo 연결
+git add . && git commit -m "first commit"
+git remote add origin https://github.com/내아이디/my-project.git
+git branch -M main && git push -u origin main
 
-`CLAUDE.md`에서 플레이스홀더를 교체:
-- `[PROJECT_NAME]` → 프로젝트 이름
-- `[PROJECT_DESCRIPTION]` → 프로젝트 설명
+# 3. CLAUDE.md 수정
+#    [PROJECT_NAME] → my-project
+#    [PROJECT_DESCRIPTION] → 프로젝트 설명
 
-## 3. 프로젝트 킥오프 (Claude와 함께)
-
-```
+# 4. Claude Code 실행
 claude
-
 > /project-kickoff my-project
 ```
 
-이 스킬이 대화형으로 다음을 설정합니다:
-- 프로젝트 컨셉 & 타겟 페르소나
-- UX/UI 디자인 방향
-- 기술 스택 조정
-- **Premise Challenge** — 핵심 가정 검증
-- **Alternatives Generation** — 2-3개 접근법 비교
-- 폴더 구조 및 초기 코드 생성
-- 세션 구성 전략
-
-## 4. 수동으로 시작하는 경우
+## 기존 repo에 추가
 
 ```bash
-# pnpm 설치 (처음이라면)
-npm install -g pnpm
-
-# 프로젝트 생성
-pnpm create vite . --template react-ts
-
-# 핵심 패키지
-pnpm add zustand @tanstack/react-query tailwindcss @tailwindcss/vite react-router-dom
-pnpm add -D @biomejs/biome
-
-# Biome 설정
-pnpm biome init
-
-# 폴더 구조
-mkdir -p src/{components/{ui,layout},hooks,services,stores,types,utils,pages,styles,constants,assets}
+git clone https://github.com/judiking1/claude_starter.git /tmp/claude_starter
+cp /tmp/claude_starter/CLAUDE.md .
+cp -r /tmp/claude_starter/.claude .
+cp -r /tmp/claude_starter/docs .
+rm -rf /tmp/claude_starter
+git add CLAUDE.md .claude docs && git commit -m "feat: add Claude Code boilerplate"
 ```
 
-## 5. 파일 구조 이해
+---
+
+## 파일 구조
 
 ```
-claude_starter/
-├── CLAUDE.md                              # 핵심 규칙 (매 세션 자동 로드)
-├── .claude/
-│   ├── launch.json                        # Claude Preview dev 서버 설정
-│   ├── rules/                             # 상세 규칙 (관련 파일 작업 시 자동 로드)
-│   │   ├── typescript.md                  # TS 파일 작업 시
-│   │   ├── components.md                  # 컴포넌트 작업 시
-│   │   ├── performance.md                 # src/ 작업 시
-│   │   ├── error-handling.md              # 서비스/훅 작업 시 (Investigation-First 포함)
-│   │   ├── design-system.md               # 스타일/컴포넌트 작업 시
-│   │   ├── git-workflow.md                # 항상 (Bisectable Commits 포함)
-│   │   └── safety.md                      # 항상 (위험 명령 가드레일)
-│   └── skills/                            # 커스텀 워크플로우 (호출 시에만 로드)
-│       ├── project-kickoff/SKILL.md       # /project-kickoff
-│       ├── team-lead/SKILL.md             # /team-lead
-│       ├── design-system/SKILL.md         # /design-system
-│       ├── review/SKILL.md                # /review
-│       ├── investigate/SKILL.md           # /investigate
-│       ├── careful/SKILL.md               # /careful
-│       ├── ship/SKILL.md                  # /ship
-│       ├── qa/SKILL.md                    # /qa
-│       ├── retro/SKILL.md                 # /retro
-│       └── plan-review/SKILL.md           # /plan-review
-├── docs/
-│   ├── quick-start.md                     # 이 파일
-│   ├── session-orchestration.md           # 세션 팀 운영 가이드
-│   └── adr/
-│       └── 000-template.md                # 아키텍처 결정 기록 템플릿
-└── README.md
+.claude/
+├── rules/         # 조건부 자동 로드 (관련 파일 작업 시)
+│   ├── typescript.md, components.md, performance.md
+│   ├── error-handling.md, design-system.md
+│   ├── git-workflow.md, safety.md
+└── skills/        # 호출 시에만 로드 (/명령어)
+    ├── project-kickoff, team-lead, design-system, review
+    ├── investigate, careful, ship, qa, retro, plan-review
 ```
 
-## 6. 주요 Skills 사용법
+---
+
+## 스킬 레퍼런스
 
 ### 개발 흐름
-| 스킬 | 언제 사용 | 명령 |
-|------|-----------|------|
-| `/project-kickoff` | 프로젝트 시작 | `/project-kickoff my-app` |
-| `/plan-review` | 코딩 전 구조 검증 | `/plan-review` |
-| `/team-lead` | 큰 기능 구현 | `/team-lead 인증 시스템 구현해줘` |
-| `/design-system` | UI 구축 | `/design-system init` |
+| 스킬 | 명령 | 핵심 |
+|------|------|------|
+| `/project-kickoff` | `/project-kickoff my-app` | Premise Challenge + Alternatives |
+| `/plan-review` | `/plan-review` | Scope Challenge + Test Coverage Diagram |
+| `/team-lead` | `/team-lead 기능설명` | 병렬 에이전트 + WTF-likelihood |
+| `/design-system` | `/design-system init` | 토큰 + UI 컴포넌트 자동 생성 |
 
 ### 품질 관리
-| 스킬 | 언제 사용 | 명령 |
-|------|-----------|------|
-| `/review` | 코드 리뷰 | `/review` |
-| `/qa` | QA 테스트 | `/qa` 또는 `/qa http://localhost:5173` |
-| `/ship` | PR 생성 | `/ship` |
-| `/simplify` | 코드 품질 | `/simplify` |
+| 스킬 | 명령 | 핵심 |
+|------|------|------|
+| `/review` | `/review` | 7-Specialist Dispatch + Fix-First |
+| `/qa` | `/qa` 또는 `/qa URL` | Health Score + 자동 수정 |
+| `/ship` | `/ship` | 테스트→버전→CHANGELOG→PR |
 
-### 디버깅 & 안전
-| 스킬 | 언제 사용 | 명령 |
-|------|-----------|------|
-| `/investigate` | 버그 수정 | `/investigate` |
-| `/careful` | 안전 모드 | `/careful` |
+### 디버깅 & 분석
+| 스킬 | 명령 | 핵심 |
+|------|------|------|
+| `/investigate` | `/investigate` | Root Cause + 3-Hypothesis |
+| `/careful` | `/careful` | 위험 명령 가드레일 |
+| `/retro` | `/retro` 또는 `/retro 30d` | Git 기반 생산성 분석 |
 
-### 분석
-| 스킬 | 언제 사용 | 명령 |
-|------|-----------|------|
-| `/retro` | 주간 회고 | `/retro` 또는 `/retro 30d` |
+---
 
-## 7. pnpm 핵심 명령어
+## 추천 워크플로우
+
+```
+/project-kickoff → /design-system init → /plan-review → 코딩 → /review → /qa → /ship → /retro
+```
+
+---
+
+## pnpm 명령어
 
 ```bash
-pnpm install          # 의존성 설치 (= npm install)
-pnpm add <pkg>        # 패키지 추가 (= npm install <pkg>)
+pnpm install          # 의존성 설치
+pnpm add <pkg>        # 패키지 추가
 pnpm add -D <pkg>     # 개발 의존성 추가
-pnpm dev              # dev 서버 시작 (= npm run dev)
-pnpm build            # 빌드 (= npm run build)
-pnpm dlx <cmd>        # 일회성 실행 (= npx <cmd>)
-```
-
-## 8. 추천 개발 워크플로우
-
-```
-/project-kickoff my-app     # 1. 프로젝트 설정
-/design-system init         # 2. 디자인 시스템 구축
-/plan-review                # 3. 구현 전 아키텍처 검증
-  ... 코딩 ...              # 4. 기능 구현
-/review                     # 5. 코드 리뷰
-/qa                         # 6. QA 테스트
-/ship                       # 7. PR 생성 & 배포
-/retro                      # 8. 주간 회고
+pnpm dev              # dev 서버 시작
+pnpm build            # 빌드
+pnpm dlx <cmd>        # 일회성 실행
 ```
