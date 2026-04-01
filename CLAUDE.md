@@ -9,6 +9,19 @@
 - **타겟**: 데스크톱 웹 우선 (반응형)
 - **배포**: Vercel
 
+## 빌더 원칙
+
+- **Boil the Lake**: AI로 완전한 구현의 한계비용이 0에 가까움. 숏컷 대신 완전한 구현 선택. 단, 달성 가능한 "lake"(테스트 커버리지, 에러 처리)과 끝없는 "ocean"(시스템 전면 재작성)을 구분
+- **Search Before Building**: 새로 만들기 전에 기존 코드·패턴·라이브러리 검색. 3가지 지식 계층 — 확립된 패턴, 현재 best practice, first-principles 추론
+- **User Sovereignty**: AI는 제안, 사용자가 결정. 사용자만이 도메인 지식, 비즈니스 관계, 전략적 타이밍을 앎
+- **Anti-Sycophancy**: 포지션을 취하라. "That's interesting" → 왜 좋은지/나쁜지 판단. "Could work" → WILL work인지 증거 제시. 가장 강한 버전의 주장에 반론하라 (strawman 금지)
+
+## Scope Control
+
+- 수정이 5개 파일 초과 시 사용자에게 blast radius 알리고 확인
+- 3회 실패한 접근법은 추측 반복 대신 에스컬레이션 (아키텍처 리뷰 또는 사용자 확인)
+- 근본 원인 파악 전 수정 시작 금지 (Investigation-First)
+
 ## 기술 스택
 
 | 영역 | 기술 | 비고 |
@@ -83,11 +96,26 @@ src/
 
 ## 도구 활용
 
-- **Claude Preview**: UI 변경 시 시각적 확인
+### 개발 흐름
+- **/project-kickoff**: 새 프로젝트 컨셉/페르소나/디자인 설정 (Premise Challenge + Alternatives 포함)
+- **/plan-review**: 코딩 전 아키텍처/설계 리뷰 (Scope Challenge + Test Coverage Diagram)
+- **/team-lead**: 팀장 모드로 Agent 서브에이전트 오케스트레이션
+- **/design-system**: 디자인 시스템 구축/컴포넌트 추가/일관성 감사
+
+### 품질 관리
+- **/review**: 코드 리뷰 (Specialist Dispatch + Fix-First Pipeline + Confidence Score)
+- **/qa**: QA 테스트 (Claude Preview 기반 + Health Score + 자동 수정)
+- **/ship**: 자동 배포 파이프라인 (테스트 → 버전 → CHANGELOG → Bisectable Commits → PR)
 - **/simplify**: 기능 완성 후 품질 점검
 - **/commit**: 자동 커밋
-- **/project-kickoff**: 새 프로젝트 컨셉/페르소나/디자인 설정
-- **/team-lead**: 팀장 모드로 Agent 서브에이전트 오케스트레이션
+
+### 디버깅 & 안전
+- **/investigate**: 체계적 디버깅 (Root Cause First + 3-Hypothesis Rule)
+- **/careful**: 위험 명령 가드레일 (rm -rf, DROP, force push 등 감지)
+
+### 분석
+- **/retro**: 주간 회고 (Git 히스토리 기반 생산성 분석)
+- **Claude Preview**: UI 변경 시 시각적 확인
 
 ## 상세 규칙 참조
 
@@ -95,9 +123,10 @@ src/
 > - `typescript.md` — TS 상세 규칙 및 패턴 예시
 > - `components.md` — 컴포넌트 패턴, import 순서
 > - `performance.md` — 성능 최적화 상세
-> - `error-handling.md` — 에러 처리 패턴
+> - `error-handling.md` — 에러 처리 패턴 (Investigation-First, 3-Hypothesis Rule)
 > - `design-system.md` — 타이포/색상/간격/접근성
-> - `git-workflow.md` — 커밋/PR/브랜치 상세
+> - `git-workflow.md` — 커밋/PR/브랜치 상세 (Bisectable Commits)
+> - `safety.md` — 위험 명령 가드레일, 프로덕션 안전 규칙
 
 ## 프로젝트 시작 체크리스트
 

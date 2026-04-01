@@ -1,6 +1,6 @@
 ---
 name: project-kickoff
-description: 새 프로젝트 시작 시 컨셉, 페르소나, 디자인 패턴, 기술 결정을 대화형으로 설정
+description: 새 프로젝트 시작 시 컨셉, 페르소나, 디자인 패턴, 기술 결정을 대화형으로 설정. Premise Challenge와 Alternatives 포함
 argument-hint: "project-name"
 user-invocable: true
 ---
@@ -34,15 +34,46 @@ CLAUDE.md의 기본 스택을 기반으로 프로젝트에 맞게 조정:
 3. 인증 방식 (없음 / JWT / OAuth / Supabase Auth)
 4. 추가 라이브러리 필요 여부
 
-### Phase 4: 문서 생성
+### Phase 4: Premise Challenge (필수)
+Phase 1-3에서 파악한 정보를 바탕으로 핵심 가정을 테스트:
+
+1. **맞는 문제인가?**: 이 프로젝트가 해결하려는 문제가 실제로 존재하는가?
+2. **아무것도 안 하면?**: 현재 상태(status quo)로 충분하지 않은 이유는?
+3. **기존 솔루션?**: 이미 존재하는 서비스/라이브러리로 해결 가능한 부분은?
+4. **가장 좁은 쐐기**: 지금 당장 가치를 제공할 수 있는 가장 작은 버전은?
+
+> **Anti-Sycophancy 규칙**: 이 단계에서 포지션을 취하라.
+> - "That's an interesting approach" → 왜 좋은지/나쁜지 판단
+> - "There are many ways" → 하나를 골라서 증거 제시
+> - "You might consider..." → "이건 잘못된 접근이다. 왜냐하면..."
+
+### Phase 5: Alternatives Generation (필수)
+반드시 2-3개 접근법을 제시:
+
+| 접근법 | 설명 |
+|--------|------|
+| **Minimal viable** | 가장 적은 파일, 가장 빠른 출시 |
+| **Ideal architecture** | 최선의 장기 구조 |
+| **Creative/lateral** | 예상치 못한 각도 |
+
+각 접근법에 포함:
+- Summary (1-2문장)
+- Effort: S / M / L / XL
+- Risk level: Low / Medium / High
+- Pros & Cons
+- 재사용 가능한 기존 코드
+
+사용자가 선택한 접근법으로 진행.
+
+### Phase 6: 문서 생성
 파악한 정보를 바탕으로 자동 생성:
 1. **CLAUDE.md 업데이트**: 플레이스홀더를 실제 값으로 교체
-2. **docs/project-brief.md**: 프로젝트 개요, 페르소나, 핵심 기능
+2. **docs/project-brief.md**: 프로젝트 개요, 페르소나, 핵심 기능, Premise Challenge 결과
 3. **docs/design-direction.md**: UX/UI 방향, 디자인 토큰 커스텀
-4. **docs/adr/001-tech-decisions.md**: 기술 결정 기록
+4. **docs/adr/001-tech-decisions.md**: 기술 결정 기록 + 선택한 접근법
 5. **docs/roadmap.md**: 마일스톤 및 기능별 우선순위
 
-### Phase 5: 초기 구조 생성
+### Phase 7: 초기 구조 생성
 ```bash
 # 프로젝트 초기화 (사용자 확인 후)
 pnpm create vite . --template react-ts
@@ -56,10 +87,10 @@ pnpm biome init
 - biome.json 설정
 - 기본 레이아웃 컴포넌트 생성
 
-### Phase 6: 세션 전략 추천
+### Phase 8: 세션 전략 추천
 프로젝트 규모에 맞는 세션 구성을 추천하고 docs/session-plan.md에 기록:
 - 소규모: 단일 세션
-- 중규모: Architect + Dev (2세션)
+- 중규모: Architect + Dev (2세션) 또는 /team-lead 활용
 - 대규모: PM + Design + Frontend + Backend + QA (5세션)
 
 ## 한국어로 대화하세요
