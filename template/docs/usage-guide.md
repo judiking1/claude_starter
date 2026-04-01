@@ -52,7 +52,7 @@ npm install -g pnpm
 
 ### 2-1. 글로벌 설치 (PC에 한 번만)
 
-스킬(10개 커맨드)을 PC에 설치합니다. 이후 어떤 프로젝트에서든 사용 가능합니다.
+스킬(11개 커맨드)을 PC에 설치합니다. 이후 어떤 프로젝트에서든 사용 가능합니다.
 
 ```bash
 git clone --depth 1 https://github.com/judiking1/claude_starter.git ~/.claude/skills/claude_starter
