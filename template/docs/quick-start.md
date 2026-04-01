@@ -16,7 +16,7 @@ cd ~/.claude/skills/claude_starter && ./setup
 ```bash
 mkdir my-project && cd my-project && git init
 claude
-> /init my-project
+> /starter my-project
 > /project-kickoff my-project
 ```
 
@@ -25,7 +25,7 @@ claude
 ```bash
 cd ~/projects/existing-project
 claude
-> /init my-project
+> /starter my-project
 # 이후 터미널에서:
 git add CLAUDE.md .claude docs && git commit -m "feat: add Claude Code boilerplate"
 ```

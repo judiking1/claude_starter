@@ -72,7 +72,7 @@ claude
 
 Claude Code 채팅창에서:
 ```
-> /init roller-coaster-tycoon
+> /starter roller-coaster-tycoon
 ```
 
 이것만 하면 프로젝트 폴더에 `CLAUDE.md`, `.claude/rules/`, `docs/`가 생성됩니다.
@@ -87,7 +87,7 @@ claude
 ```
 
 ```
-> /init roller-coaster-tycoon
+> /starter roller-coaster-tycoon
 ```
 
 초기화 후 터미널에서:

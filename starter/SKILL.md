@@ -1,27 +1,28 @@
 ---
-name: init
+name: starter
 description: 새 프로젝트에 Claude Code Starter 템플릿 초기화 — CLAUDE.md, rules, docs를 현재 프로젝트에 복사
 argument-hint: "project-name"
 user-invocable: true
 ---
 
-# Init Skill — 프로젝트 템플릿 초기화
+# Starter Skill — 프로젝트 템플릿 초기화
 
 현재 프로젝트에 Claude Code Starter의 규칙 파일과 문서를 복사합니다.
 
+> **참고**: Claude Code의 내장 `/init`과 이름 충돌을 피하기 위해 `/starter`로 명명되었습니다.
+
 ## 트리거
-- `/init my-project` — 프로젝트 이름 지정
-- `/init` — 프로젝트 이름 없이 (나중에 CLAUDE.md에서 수동 수정)
+- `/starter my-project` — 프로젝트 이름 지정
+- `/starter` — 프로젝트 이름 없이 (나중에 CLAUDE.md에서 수동 수정)
 
 ## 실행 순서
 
 ### Step 1: 템플릿 디렉토리 찾기
-이 SKILL.md 파일의 위치에서 `../template/` 디렉토리를 찾습니다.
-일반적으로 `~/.claude/skills/claude_starter/template/` 에 있습니다.
+`~/.claude/skills/claude_starter/template/` 디렉토리를 찾습니다.
 
 ```
 ~/.claude/skills/claude_starter/
-├── init/SKILL.md          ← 이 파일
+├── starter/SKILL.md       ← 이 파일
 └── template/              ← 여기서 읽음
     ├── CLAUDE.md
     ├── .claude/
